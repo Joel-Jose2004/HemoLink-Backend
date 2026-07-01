@@ -36,9 +36,7 @@ async NotifyDonor(req:Request,res:Response){
             const email1=email as string
             const name1=name as string
             const blood1=blood as string
-            console.log(email1)
-            console.log("USER:", process.env.GMAIL_USER);
-           console.log("PASS:", process.env.GMAIL_PASS ? "Existe" : "Não existe");
+           
             await EmailService.notifyDonor(email1,"Atenção",
             `<h1>Olá ${name1}!</h1><p>
              Informamos que há alguém que precisa ajuda com doação de sangue do tipo ${blood1}.</p>`);
