@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import EmailService from "../services/emailService"
+import dotenv from "dotenv"
+dotenv.config();
 
 class EmailController {
 
@@ -30,11 +32,13 @@ async CreateCount(req:Request,res:Response){
 async NotifyDonor(req:Request,res:Response){
       
  try {
-         const {email,name,blood}=req.body
+         const {email,name,blood}=req.query
             const email1=email as string
             const name1=name as string
             const blood1=blood as string
             console.log(email1)
+            console.log("USER:", process.env.GMAIL_USER);
+           console.log("PASS:", process.env.GMAIL_PASS ? "Existe" : "Não existe");
             await EmailService.notifyDonor(email1,"Atenção",
             `<h1>Olá ${name1}!</h1><p>
              Informamos que há alguém que precisa ajuda com doação de sangue do tipo ${blood1}.</p>`);
