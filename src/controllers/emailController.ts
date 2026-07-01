@@ -32,7 +32,7 @@ async CreateCount(req:Request,res:Response){
 async NotifyDonor(req:Request,res:Response){
       
  try {
-         const {email,name,blood}=req.query
+         const {email,name,blood}=req.body
             const email1=email as string
             const name1=name as string
             const blood1=blood as string
