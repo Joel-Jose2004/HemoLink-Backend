@@ -12,7 +12,7 @@ async CreateCount(req:Request,res:Response){
             const em=email as string
             const na=name as string
             console.log(em)
-            await EmailService.acountCreated(em,"Primeiro teste",
+            await EmailService.acountCreated(em,"Conta criada",
             `<h1>Olá ${na}!</h1><p>Sejá Bem-Vindo ao Hemolink
              Apartir de agora serás notificado sobre qualquer situação.</p>`);
             return res.status(200).json({
@@ -78,6 +78,62 @@ async cancelOrder(req:Request,res:Response){
             });
         }   
 }
+
+
+
+async UserAccountCreate(req:Request,res:Response){
+      
+ try {
+         const {email,name}=req.body
+            const em=email as string
+            const na=name as string
+            console.log(em)
+            await EmailService.acountCreated(em,"Conta criada",
+            `<h1>Olá ${na}!</h1><p>Sejá Bem-Vindo ao Hemolink
+             Apartir de agora podes notificar os doadores de sangue sempre que precisares de 
+             ajuda.</p>`);
+            return res.status(200).json({
+                success: true,
+                message: "Email enviado."
+             });
+            
+        }
+        catch (error) {
+           return res.status(500).json({
+                success: false,
+                error
+            });
+        }   
+}
+
+
+
+
+async UserOrderNotify(req:Request,res:Response){
+      
+ try {
+         const {email,name}=req.body
+            const em=email as string
+            const na=name as string
+            console.log(em)
+            await EmailService.acountCreated(em,"Atenção",
+            `<h1>Olá ${na}!</h1><p>
+             Temos o praser de informar que temos um doador disponível para o ajudar, dentro de 
+             algumas horas entrara em contacto.</p>`);
+            return res.status(200).json({
+                success: true,
+                message: "Email enviado."
+             });
+            
+        }
+        catch (error) {
+           return res.status(500).json({
+                success: false,
+                error
+            });
+        }   
+}
+
 
 
 }
